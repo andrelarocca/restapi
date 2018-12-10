@@ -45,8 +45,6 @@ def api_netname(net_id):
     for n in net["data"]:
         if n["id"] == int(net_id):
             break
-    else:
-        n = None
     response = {
         "data": n["name"]
     }
