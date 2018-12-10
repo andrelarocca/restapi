@@ -40,5 +40,18 @@ def api_ixnets(ix_id):
     return json.dumps(response)
 
 
+@app.route('/api/netname/<net_id>')
+def api_netname(net_id):
+    for n in net["data"]:
+        if n["id"] == int(net_id):
+            break
+    else:
+        n = None
+    response = {
+        "data": n["name"]
+    }
+    return json.dumps(response)
+
+
 if __name__ == '__main__':
     app.run()
