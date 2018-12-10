@@ -25,18 +25,22 @@ def api_ix():
     response = {
         "data": ix["data"]
     }
+
     return json.dumps(response)
 
 
 @app.route('/api/ixnets/<ix_id>')
 def api_ixnets(ix_id):
     net_ids = []
+
     for ni in netixlan["data"]:
         if ni["ix_id"] == int(ix_id):
             net_ids.append(ni["net_id"])
+
     response = {
         "data": net_ids
     }
+
     return json.dumps(response)
 
 
@@ -45,11 +49,13 @@ def api_netname(net_id):
     for n in net["data"]:
         if n["id"] == int(net_id):
             break
+
     response = {
         "data": n["name"]
     }
+
     return json.dumps(response)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=PORT)
