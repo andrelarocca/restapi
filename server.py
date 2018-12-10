@@ -28,5 +28,17 @@ def api_ix():
     return json.dumps(response)
 
 
+@app.route('/api/ixnets/<ix_id>')
+def api_ixnets(ix_id):
+    net_ids = []
+    for ni in netixlan["data"]:
+        if ni["ix_id"] == int(ix_id):
+            net_ids.append(ni["net_id"])
+    response = {
+        "data": net_ids
+    }
+    return json.dumps(response)
+
+
 if __name__ == '__main__':
     app.run()
